@@ -1,0 +1,22 @@
+#include<cctype>
+//isalpha(int c): 判断一个字符是否为字母（包括大写和小写字母）。
+//isdigit(int c): 判断一个字符是否为数字。
+//isalnum(int c): 判断一个字符是否为字母或数字。
+//isupper(int c): 判断一个字符是否为大写字母。
+//islower(int c): 判断一个字符是否为小写字母。
+//isspace(int c): 判断一个字符是否为空白字符（空格、换行、制表符等）。
+//toupper(int c): 将一个字符转换为大写形式。
+//tolower(int c): 将一个字符转换为小写形式。
+
+//将字符串倒序
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string originalString = "Hello, World!";
+    string reversedString = string(originalString.rbegin(), originalString.rend());
+    cout << reversedString << endl;
+    return 0;
+}
