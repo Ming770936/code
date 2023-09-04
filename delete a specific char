@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+
+// 删除字符串中指定的字母
+std::string removeLetters(const std::string& input, char target) {
+    std::string result;
+    
+    for (char character : input) {
+        if (character != target) {
+            result += character;
+        }
+    }
+    
+    return result;
+}
+
+int main() {
+    std::string inputString = "Hello, World!";
+    char targetLetter = 'o';
+
+    std::string modifiedString = removeLetters(inputString, targetLetter);
+
+    std::cout << "原始字符串: " << inputString << std::endl;
+    std::cout << "删除字母 '" << targetLetter << "' 后的字符串: " << modifiedString << std::endl;
+
+    return 0;
+}
