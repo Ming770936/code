@@ -1,0 +1,183 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int Mod=1000000007;
+
+struct Matrix 
+{
+	long long c[101][101];
+} A,I;
+long long n,k;
+Matrix operator*(const Matrix &x,const Matrix &y)
+{
+	Matrix a;
+	for(int i=1; i<=n; i++)
+		for(int j=1; j<=n; j++)
+			a.c[i][j]=0;
+	for(int i=1; i<=n; i++)
+		for(int j=1; j<=n; j++)
+			for(int k=1; k<=n; k++)
+			{
+				a.c[i][j]+=x.c[i][k]*y.c[k][j]%Mod;
+				a.c[i][j]%=Mod;
+			}
+	return a;
+}
+
+int main()
+{
+	cin>>n>>k;
+	
+	for(int i=1; i<=n; i++)
+		for(int j=1; j<=n; j++)
+			cin>>A.c[i][j];
+	for(int i=1; i<=n; i++)
+		I.c[i][i]=1;
+		
+	while(k>0)
+	{
+		if(k%2==1) I=I*A;
+		A=A*A;
+		k=k>>1;
+	}
+	
+	for(int i=1; i<=n; i++)
+	{
+		for(int j=1; j<=n; j++)
+			cout<<I.c[i][j]<<' ';
+		cout<<endl;
+	}
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+// 定义矩阵乘法函数
+void matrixMultiply(int** A, int** B, int** result, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            result[i][j] = 0;
+            for (int k = 0; k < n; k++)
+            {
+                result[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+// 定义矩阵的m次幂计算函数
+void matrixPower(int** A, int n, int m, int** result)
+{
+    // 创建临时矩阵用于计算中间结果
+    int** temp = new int*[n];
+    for (int i = 0; i < n; i++)
+    {
+        temp[i] = new int[n];
+    }
+
+    // 初始化结果矩阵为单位矩阵
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            result[i][j] = (i == j) ? 1 : 0;
+        }
+    }
+
+    while (m > 0)
+    {
+        if (m % 2 == 1)
+        {
+            matrixMultiply(result, A, temp, n);
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    result[i][j] = temp[i][j];
+                }
+            }
+        }
+
+        matrixMultiply(A, A, temp, n);
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                A[i][j] = temp[i][j];
+            }
+        }
+        m /= 2;
+    }
+
+    // 释放临时矩阵的内存
+    for (int i = 0; i < n; i++) {
+        delete[] temp[i];
+    }
+    delete[] temp;
+}
+
+int main() {
+    int n = 2; // 方阵的阶数
+    int m = 3; // 幂次数
+
+    // 定义并初始化n阶方阵A
+    int** A = new int*[n];
+    for (int i = 0; i < n; i++)
+    {
+        A[i] = new int[n];
+    }
+
+    A[0][0] = 9;
+    A[0][1] = 7;
+    A[1][0] = 5;
+    A[1][1] = 1;
+
+    // 创建结果矩阵
+    int** result = new int*[n];
+    for (int i = 0; i < n; i++)
+    {
+        result[i] = new int[n];
+    }
+
+    // 计算方阵A的m次幂
+    matrixPower(A, n, m, result);
+
+    // 输出结果
+    cout << "A^"<< m << "= " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cout << result[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // 释放内存
+    for (int i = 0; i < n; i++)
+    {
+        delete[] A[i];
+        delete[] result[i];
+    }
+    delete[] A;
+    delete[] result;
+
+    return 0;
+}
