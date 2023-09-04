@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+void quickSort(int arr[], int low, int high) 
+{
+    if (low < high)
+        {
+        int pivot = arr[(low + high) / 2];
+        
+        // 分割数组，使得小于枢纽元素的元素位于左边，大于枢纽元素的元素位于右边
+        int i = low;
+        int j = high;
+        while (i <= j) {
+            while (arr[i] < pivot) {
+                i++;
+            }
+            while (arr[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                std::swap(arr[i], arr[j]);
+                i++;
+                j--;
+            }
+        }
+        
+        // 递归排序左边和右边的子数组
+        quickSort(arr, low, j);
+        quickSort(arr, i, high);
+    }
+}
+
+int main() {
+    int arr[] = {5, 1, 9, 3, 7, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    
+    cout << "原始数组: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    
+    quickSort(arr, 0, n - 1);
+    
+    cout << "排序后的数组: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
