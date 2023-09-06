@@ -20,3 +20,38 @@ int main()
     cout << reversedString << endl;
     return 0;
 }
+
+
+
+
+
+for (char &c : inputString) {
+        std::cout << c << " "; // Output each character
+    }
+
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string text = "   This is a text with leading and trailing spaces.   ";
+
+    // 去除开头的空格
+    size_t start = text.find_first_not_of(" \t");
+    if (start != string::npos) {
+        text = text.substr(start);
+    }
+
+    // 去除结尾的空格
+    size_t end = text.find_last_not_of(" \t");
+    if (end != string::npos) {
+        text = text.substr(0, end + 1);
+    }
+
+    cout << "Trimmed Text: " << text << endl;
+
+    return 0;
+}
