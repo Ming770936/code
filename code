@@ -25,8 +25,47 @@ int main()
 
 
 
+#include <iostream>
+#include <string>
+
+int main() {
+    string originalString = "Hello, World!";
+    int n = 5;
+    string result = originalString.substr(0, n); // 使用substr方法
+    cout << result << endl; // 输出结果为 "Hello"
+    return 0;
+}
+
+
+
+
+memset(chars, 0, sizeof(chars)) 是一个C/C++编程中的常见操作，用于将一段内存区域中的数据设置为指定的值。这里是每个参数的含义：
+
+chars：指向要操作的内存区域的指针或数组。
+0：要设置的值，通常是一个整数。在这种情况下，它是0。
+sizeof(chars)：要操作的内存区域的大小（以字节为单位），可以使用 sizeof 运算符来获取。
+因此，memset(chars, 0, sizeof(chars)) 的意思是将 chars 所指向的内存区域的所有字节都设置为0。这通常用于初始化或清零数组、缓冲区或其他内存块，以确保其内容为空或具有特定初始值。
+
+示例用法：
+#include <iostream>
+#include <cstring>
+
+int main() {
+    char chars[10]; // 创建一个包含10个字符的数组
+    memset(chars, 0, sizeof(chars)); // 将数组中的所有字符都设置为0
+
+    // 打印数组中的字符，它们应该都是0
+    for (int i = 0; i < 10; i++) {
+        std::cout << static_cast<int>(chars[i]) << " "; // 输出0 0 0 0 0 0 0 0 0 0
+    }
+
+    return 0;
+}
+
+
+
 for (char &c : inputString) {
-        std::cout << c << " "; // Output each character
+        cout << c << " "; // Output each character
     }
 
 
