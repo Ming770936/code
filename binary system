@@ -1,0 +1,16 @@
+/*
+__builtin_popcount(n) 是一种GCC编译器提供的内置函数（或称为内建函数），
+用于计算一个整数 n 的二进制表示中有多少个1。
+这个函数通常用于高效地计算整数中1的数量，尤其在处理大量数据时，
+它可以比手动编写位运算代码更快。
+在使用这个函数时，你需要包含头文件 <popcntintrin.h>。*/
+#include <stdio.h>
+#include <popcntintrin.h>
+
+int main() {
+    unsigned int n = 0b11010110; // 二进制表示，这是214的二进制表示
+    int onesCount = __builtin_popcount(n);
+    printf("Number of ones in %u is %d\n", n, onesCount); // 输出结果为4
+
+    return 0;
+}
