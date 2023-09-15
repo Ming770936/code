@@ -94,3 +94,14 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+字符串头尾字符
+sentence.back() != sentence.front()
