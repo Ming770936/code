@@ -105,3 +105,43 @@ int main() {
 
 字符串头尾字符
 sentence.back() != sentence.front()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string input;
+    std::string result = "";
+
+    std::cout << "请输入一个字符串: ";
+    std::cin >> input;
+
+    for (char ch : input) {
+        // 检查结果字符串中是否已经包含当前字符
+        if (result.find(ch) == std::string::npos) {
+            // 如果不包含，则将当前字符添加到结果字符串中
+            result += ch;
+        }
+    }
+
+    std::cout << "去除相同字母后的字符串: " << result << std::endl;
+
+    return 0;
+}
+
