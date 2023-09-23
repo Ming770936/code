@@ -24,7 +24,7 @@ int main()
 
 
 
-
+//取子序列
 #include <iostream>
 #include <string>
 
@@ -145,3 +145,47 @@ int main() {
     return 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//判断子序列
+#include <iostream>
+using namespace std;
+
+bool isSubsequence(string s, string t) {
+    int i = 0, j = 0;
+
+    while (i < s.length() && j < t.length()) {
+        if (s[i] == t[j]) {
+            j++;
+        }
+        i++;
+    }
+
+    return j == t.length();
+}
+
+int main() {
+    string s = "abcdefg";
+    string t = "aceg";
+
+    if (isSubsequence(s, t)) {
+        cout << "t 是 s 的子序列" << endl;
+    } else {
+        cout << "t 不是 s 的子序列" << endl;
+    }
+
+    return 0;
+}
