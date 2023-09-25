@@ -189,3 +189,50 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+//判断是否有重复字符
+#include <iostream>
+#include <string>
+
+bool hasDuplicateCharacters(const std::string& str) {
+    // 假定字符串只包含ASCII字符，创建一个大小为256的布尔数组
+    bool char_set[256] = {false};
+
+    for (char c : str) {
+        int index = static_cast<int>(c);
+
+        // 如果字符已经出现过，则返回true
+        if (char_set[index]) {
+            return true;
+        }
+
+        // 将字符标记为已经出现过
+        char_set[index] = true;
+    }
+
+    // 遍历完整个字符串后，没有发现重复字符，返回false
+    return false;
+}
+
+int main() {
+    std::string input_string;
+    std::cout << "输入一个字符串: ";
+    std::cin >> input_string;
+
+    if (hasDuplicateCharacters(input_string)) {
+        std::cout << "字符串包含重复字符." << std::endl;
+    } else {
+        std::cout << "字符串不包含重复字符." << std::endl;
+    }
+
+    return 0;
+}
