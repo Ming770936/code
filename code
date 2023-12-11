@@ -111,17 +111,6 @@ sentence.back() != sentence.front()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 #include <iostream>
 #include <string>
 
